@@ -1,7 +1,6 @@
 # RopoxSmartControl
 This repo contains code for running ropox smart control appliances via raspberry pi. 
 
-------------------------------------------------------------------------------------
 
 ## Project Structure
 
