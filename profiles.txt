@@ -1,2 +1,3 @@
-hjem, bord 100,skab 2005,ovn 4002
+
+hans, bord 100,skab 2005,ovn 4002
 morten, bord 123,skab 4523,ovn 456
