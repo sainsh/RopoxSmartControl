@@ -1,6 +1,24 @@
 # RopoxSmartControl
 This repo contains code for running ropox smart control appliances via raspberry pi. 
 
+## Initial Information
+
+| Key                           | Value     |
+|-------------------------------|-----------|
+| Language                      | Python    |
+| Python version                | v. 3.8.2  |
+| Voice Recognition Framework   | SOPARE    |
+| SOPARE version                | 1.5.0     |
+| Raspberry Pi version          | 4         |
+| Raspbian version              | 10        |
+
+## Sopare Framework
+The Sopare framework is a **SO**und **PA**ttern **RE**cognition project written in Python. <br>
+
+The Sopare framework can be found here: https://www.bishoph.org/ <br><br>
+A detailed installation guide for Raspberry Pi (Raspbian) can be found here: <br> https://www.bishoph.org/step-by-step-raspberry-pi-offline-voice-recognition-with-sopare/ <br><br>
+Sopare can be found on GitHub here: https://github.com/bishoph/sopare <br><br>
+
 
 ## Project Structure
 
