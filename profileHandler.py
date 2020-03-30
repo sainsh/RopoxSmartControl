@@ -1,4 +1,4 @@
-
+import subprocess
 
 #elements is a 2d array
 def save_profile(profileName, elements): #element string format: bord x,skab y,ovn z ....
@@ -50,4 +50,9 @@ if __name__ == "__main__":
     save_profile("hans", "bord 10,skab 205,ovn 402")
     save_profile("morten", "bord 123,skab 4523,ovn 456")
     save_profile("hans", "bord 100,skab 2005,ovn 4002")
+
+    test = subprocess.Popen("dir", stdout=subprocess.PIPE, shell=True)
+    output = test.communicate()
+    print(output)
+
     print (read_profile("hans"))
