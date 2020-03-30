@@ -7,7 +7,7 @@
 
 import os
 
-# Method that takes a command line command and executes it on a thread
+# Method that takes a command line command and executes it
 # @param command: the command to be executed
 
 def runCommand(command): 
