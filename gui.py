@@ -14,22 +14,17 @@ def main():
         clock = pygame.time.Clock()
         fps=60
         
-
-        tl_button = pygame.Rect(width/4*1-width/5/2, height/4, width/5, height/5)
-        tm_button = pygame.Rect(width/4*2-width/5/2, height/4, width/5, height/5)
-        tr_button = pygame.Rect(width/4*3-width/5/2, height/4, width/5, height/5)
-        bl_button = pygame.Rect(width/4*1-width/5/2, height/2, width/5, height/5)
-        bm_button = pygame.Rect(width/4*2-width/5/2, height/2, width/5, height/5)
-        br_button = pygame.Rect(width/4*3-width/5/2, height/2, width/5, height/5)
+        #create and display buttons
+        tl_button = button(width/4*1-width/5/2, height/4, width/5, height/5,[255, 0, 0])
+        tm_button = button(width/4*2-width/5/2, height/4, width/5, height/5,[255, 0, 0])
+        tr_button = button(width/4*3-width/5/2, height/4, width/5, height/5,[255, 0, 0])
+        bl_button = button(width/4*1-width/5/2, height/2, width/5, height/5,[255, 0, 0])
+        bm_button = button(width/4*2-width/5/2, height/2, width/5, height/5,[255, 0, 0])
+        br_button = button(width/4*3-width/5/2, height/2, width/5, height/5,[255, 0, 0])
 
         pygame.display.set_caption('ROPOX')
         
-        pygame.draw.rect(screen, [255, 0, 0], tl_button)
-        pygame.draw.rect(screen, [255, 0, 0], tm_button)
-        pygame.draw.rect(screen, [255, 0, 0], tr_button)
-        pygame.draw.rect(screen, [255, 0, 0], bl_button)
-        pygame.draw.rect(screen, [255, 0, 0], bm_button)
-        pygame.draw.rect(screen, [255, 0, 0], br_button)# draw buttons
+       
         message_display("PROFIL",width/4*1,height/3+10)
         message_display("BORD",width/4*2,height/3+10)
         message_display("SKAB",width/4*3,height/3+10)
@@ -52,8 +47,17 @@ def main():
 
                     if tl_button.collidepoint(mouse_pos):
                     # prints current location of mouse
-                        print('button was pressed at {0}'.format(mouse_pos))
-            
+                        print('TopLeft button was pressed at {0}'.format(mouse_pos))
+                    elif tm_button.collidepoint(mouse_pos):
+                        print('TopMid button was pressed at {0}'.format(mouse_pos))
+                    elif tr_button.collidepoint(mouse_pos):
+                        print('TopRight button was pressed at {0}'.format(mouse_pos))
+                    elif bl_button.collidepoint(mouse_pos):
+                        print('BottomLeft button was pressed at {0}'.format(mouse_pos))
+                    elif bm_button.collidepoint(mouse_pos):
+                        print('BottomMid button was pressed at {0}'.format(mouse_pos))
+                    elif br_button.collidepoint(mouse_pos):
+                        print('BottomRight button was pressed at {0}'.format(mouse_pos))
 
             screen.fill(bg)
 
@@ -75,6 +79,13 @@ def message_display(text,x,y):
     TextRect.center = (x,y)
     screen.blit(TextSurf, TextRect)
     #pygame.display.update()
+
+def button(x,y,width,height, color):
+
+    button = pygame.Rect(x,y,width,height)
+    pygame.draw.rect(screen, color, button)
+    return button
+    
 
 
 if __name__ == '__main__':
