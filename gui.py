@@ -112,9 +112,6 @@ def main_screen(myfont):
 def bord_screen(myfont):
     h = 0
     pygame.display.flip()
-    up = False
-    down = False
-    counter = 0
     while True:
         # create and display buttons
         tl_button = button(width/4*1-btn_width/2, height/4,
@@ -182,15 +179,6 @@ def bord_screen(myfont):
                 if(event.key == K_ESCAPE):
                     return False
         screen.fill(bg)
-        if(up):
-            h += 1
-        elif(down):
-            h -= 1
-        clock.tick(fps)
-        counter +=1
-        if(counter % 20 == 0):
-            up=False
-            down=False
 
 
 def text(txt, myfont, location):
