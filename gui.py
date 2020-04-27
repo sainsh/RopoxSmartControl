@@ -5,7 +5,7 @@ import sys
 import time
 from pygame.locals import *
 import os 
-
+print(os.name)
 
 rp = ""
 if(os.name != "nt") :
