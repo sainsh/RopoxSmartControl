@@ -2,7 +2,7 @@ import pygame
 import sys
 import time
 from pygame.locals import *
-#import rasp_paste as rp
+import rasp_paste as rp
 
 width = 800
 height = 480
@@ -156,7 +156,7 @@ def bord_screen(myfont):
                     # prints current location of mouse
                     print(
                         'TopLeft button was pressed at {0}'.format(mouse_pos))
-                    #rp.goUp()
+                    rp.goUp()
                     up=True
                     down=False
                 elif tm_button.collidepoint(mouse_pos):
@@ -167,7 +167,7 @@ def bord_screen(myfont):
                 elif bl_button.collidepoint(mouse_pos):
                     print(
                         'BottomLeft button was pressed at {0}'.format(mouse_pos))
-                    #rp.goDown()
+                    rp.goDown()
                     down=True
                     up=False
                 elif bm_button.collidepoint(mouse_pos):
