@@ -107,6 +107,9 @@ def main_screen(myfont):
 def bord_screen(myfont):
     h = 0
     pygame.display.flip()
+    up = False
+    down = False
+    counter = 0
     while True:
         # create and display buttons
         tl_button = button(width/4*1-btn_width/2, height/4,
@@ -128,13 +131,14 @@ def bord_screen(myfont):
         text("NED", myfont, bl_button.center)
         text("PROFIL", myfont, bm_button.center)
         text("TILBAGE", myfont, br_button.center)
-        text(str(h), myfont, (tm_button.center[0],tm_button.center[1]+30 ))
+        text(str(h), myfont, (tm_button.center[0], tm_button.center[1]+30))
 
         # display headline
         pygame.display.set_caption('ROPOX')
-        text("ROPOX", myfont, (width/2, height/10))
+        text("BORD", myfont, (width/2, height/10))
 
         pygame.display.flip()
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
@@ -148,7 +152,9 @@ def bord_screen(myfont):
                     # prints current location of mouse
                     print(
                         'TopLeft button was pressed at {0}'.format(mouse_pos))
-                    #rp.goUp()
+                    # rp.goUp()
+                    up=True
+                    down=False
                 elif tm_button.collidepoint(mouse_pos):
                     print('TopMid button was pressed at {0}'.format(mouse_pos))
                 elif tr_button.collidepoint(mouse_pos):
@@ -157,7 +163,9 @@ def bord_screen(myfont):
                 elif bl_button.collidepoint(mouse_pos):
                     print(
                         'BottomLeft button was pressed at {0}'.format(mouse_pos))
-                    #rp.goDown()
+                    # rp.goDown()
+                    down=True
+                    up=False
                 elif bm_button.collidepoint(mouse_pos):
                     print(
                         'BottomMid button was pressed at {0}'.format(mouse_pos))
@@ -166,9 +174,15 @@ def bord_screen(myfont):
                         'BottomRight button was pressed at {0}'.format(mouse_pos))
                     return "tilbage"
         screen.fill(bg)
-
+        if(up):
+            h += 1
+        elif(down):
+            h -= 1
         clock.tick(fps)
-        h += 1
+        counter +=1
+        if(counter % 20 == 0):
+            up=False
+            down=False
 
 
 def text(txt, myfont, location):
