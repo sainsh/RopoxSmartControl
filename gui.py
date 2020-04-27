@@ -2,14 +2,14 @@ import pygame
 import sys
 import time
 from pygame.locals import *
-import rasp_paste as rp
+#import rasp_paste as rp
 
 width = 800
-height = 600
+height = 480
 size = [width, height]
 bg = [0, 0, 0]
 btn_width = 180
-btn_height = 120
+btn_height = 100
 
 
 clock = pygame.time.Clock()
@@ -99,6 +99,9 @@ def main_screen(myfont):
                 elif br_button.collidepoint(mouse_pos):
                     print(
                         'BottomRight button was pressed at {0}'.format(mouse_pos))
+            if(event.type == pygame.KEYDOWN):
+                if(event.key == K_ESCAPE):
+                    return False
         screen.fill(bg)
 
         clock.tick(fps)
@@ -152,7 +155,7 @@ def bord_screen(myfont):
                     # prints current location of mouse
                     print(
                         'TopLeft button was pressed at {0}'.format(mouse_pos))
-                    rp.goUp()
+                    #rp.goUp()
                     up=True
                     down=False
                 elif tm_button.collidepoint(mouse_pos):
@@ -163,7 +166,7 @@ def bord_screen(myfont):
                 elif bl_button.collidepoint(mouse_pos):
                     print(
                         'BottomLeft button was pressed at {0}'.format(mouse_pos))
-                    rp.goDown()
+                    #rp.goDown()
                     down=True
                     up=False
                 elif bm_button.collidepoint(mouse_pos):
@@ -173,6 +176,9 @@ def bord_screen(myfont):
                     print(
                         'BottomRight button was pressed at {0}'.format(mouse_pos))
                     return "tilbage"
+            if(event.type == pygame.KEYDOWN):
+                if(event.key == K_ESCAPE):
+                    return False
         screen.fill(bg)
         if(up):
             h += 1
