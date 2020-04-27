@@ -94,5 +94,6 @@ def run(readable_results, data, rawbuf):
     # stop saettes til False, ellers kan traaden ikke starte et nyt loop hv$
             stop = False
 
-
+def cleanup() :
+    GPIO.cleanup()
 

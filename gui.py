@@ -34,6 +34,7 @@ def main():
         elif(next == False):
             break
     pygame.quit()
+    rp.cleanup()
     sys.exit
 
 
