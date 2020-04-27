@@ -128,8 +128,8 @@ def bord_screen(myfont):
                            btn_width, btn_height, [255, 0, 0])
         # display text for buttons
         text("OP", myfont, tl_button.center)
-        text(u"HØJDE".decode("utf-8"), myfont, tm_button.center)
-        text(u"LÅS".decode("utf-8"), myfont, tr_button.center)
+        text(u"HØJDE", myfont, tm_button.center)
+        text(u"LÅS", myfont, tr_button.center)
         text("NED", myfont, bl_button.center)
         text("PROFIL", myfont, bm_button.center)
         text("TILBAGE", myfont, br_button.center)
