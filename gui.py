@@ -3,7 +3,7 @@ import sys
 import time
 from pygame.locals import *
 import rasp_paste as rp
-import unicodedata
+
 
 width = 800
 height = 480
@@ -22,7 +22,7 @@ pygame.mouse.set_visible = False
 
 def main():
     pygame.init()
-    myfont = pygame.font.SysFont("freesansbold", 30)
+    myfont = pygame.font.Font("segoe-ui-symbol.ttf", 30)
     while True:
         next = main_screen(myfont)
         if(next == "bord"):
@@ -63,7 +63,7 @@ def main_screen(myfont):
         text("PROFIL", myfont, tl_button.center)
         text("BORD", myfont, tm_button.center)
         text("SKAB", myfont, tr_button.center)
-        text("LAAS", myfont, bl_button.center)
+        text("LÅS", myfont, bl_button.center)
         text("OVN", myfont, bm_button.center)
         text("INDSTILLINGER", myfont, br_button.center)
 
@@ -128,8 +128,8 @@ def bord_screen(myfont):
                            btn_width, btn_height, [255, 0, 0])
         # display text for buttons
         text("OP", myfont, tl_button.center)
-        text("HOEJDE", myfont, tm_button.center)
-        text("LAAS", myfont, tr_button.center)
+        text("HØJDE", myfont, tm_button.center)
+        text("LÅS", myfont, tr_button.center)
         text("NED", myfont, bl_button.center)
         text("PROFIL", myfont, bm_button.center)
         text("TILBAGE", myfont, br_button.center)
