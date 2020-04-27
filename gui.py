@@ -63,7 +63,7 @@ def main_screen(myfont):
         text("PROFIL", myfont, tl_button.center)
         text("BORD", myfont, tm_button.center)
         text("SKAB", myfont, tr_button.center)
-        text(unicodedata.normalize("NFC","LÅS"), myfont, bl_button.center)
+        text("LAAS", myfont, bl_button.center)
         text("OVN", myfont, bm_button.center)
         text("INDSTILLINGER", myfont, br_button.center)
 
