@@ -4,11 +4,11 @@ import pygame
 import sys
 import time
 from pygame.locals import *
-import os 
+import os
 print(os.name)
 
 rp = ""
-if(os.name != "nt") :
+if(os.name != "nt"):
     import rasp_paste as rp
 
 
@@ -39,7 +39,8 @@ def main():
         elif(next == False):
             break
     pygame.quit()
-    rp.cleanup()
+    if(os.name != "nt"):
+        rp.cleanup()
     sys.exit
 
 
@@ -148,7 +149,7 @@ def bord_screen(myfont):
         text("BORD", myfont, (width/2, height/10))
 
         pygame.display.flip()
-        
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
@@ -164,6 +165,7 @@ def bord_screen(myfont):
                         'TopLeft button was pressed at {0}'.format(mouse_pos))
                     if(os.name != "nt"):
                         rp.goUp()
+                    h += 5
                 elif tm_button.collidepoint(mouse_pos):
                     print('TopMid button was pressed at {0}'.format(mouse_pos))
                 elif tr_button.collidepoint(mouse_pos):
@@ -174,6 +176,7 @@ def bord_screen(myfont):
                         'BottomLeft button was pressed at {0}'.format(mouse_pos))
                     if(os.name != "nt"):
                         rp.goDown()
+                    h -= 5    
                 elif bm_button.collidepoint(mouse_pos):
                     print(
                         'BottomMid button was pressed at {0}'.format(mouse_pos))
