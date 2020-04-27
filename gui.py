@@ -16,6 +16,7 @@ clock = pygame.time.Clock()
 fps = 60
 
 screen = pygame.display.set_mode(size)
+pygame.mouse.set_visible = False
 
 
 def main():
