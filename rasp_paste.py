@@ -2,8 +2,8 @@ from threading import Thread
 import time
 import RPi.GPIO as GPIO
 
-down = 11
-up = 13
+down = 16
+up = 18
 listening = 15
 
 GPIO.setmode(GPIO.BOARD)
