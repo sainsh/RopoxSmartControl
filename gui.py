@@ -24,7 +24,7 @@ pygame.mouse.set_visible = False
 
 def main():
     pygame.init()
-    myfont = pygame.font.sysfont("freesansbold", 30)
+    myfont = pygame.font.SysFont("freesansbold", 30)
     while True:
         next = main_screen(myfont)
         if(next == "bord"):
