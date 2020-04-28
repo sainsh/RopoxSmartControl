@@ -10,7 +10,7 @@ print(os.name)
 rp = ""
 if(os.name != "nt"):
     import rasp_paste as rp
-
+import threading
 
 width = 800
 height = 480
@@ -164,7 +164,9 @@ def bord_screen(myfont):
                     print(
                         'TopLeft button was pressed at {0}'.format(mouse_pos))
                     if(os.name != "nt"):
-                        rp.goUp()
+                        thread = threading.Thread(target = rp.goUp(),args = ())
+                        thread.daemon = True
+                        thread.start()
                     h += 5
                 elif tm_button.collidepoint(mouse_pos):
                     print('TopMid button was pressed at {0}'.format(mouse_pos))
@@ -175,7 +177,9 @@ def bord_screen(myfont):
                     print(
                         'BottomLeft button was pressed at {0}'.format(mouse_pos))
                     if(os.name != "nt"):
-                        rp.goDown()
+                        thread = threading.Thread(target = rp.goDown(),args = ())
+                        thread.daemon = True
+                        thread.start()
                     h -= 5    
                 elif bm_button.collidepoint(mouse_pos):
                     print(
