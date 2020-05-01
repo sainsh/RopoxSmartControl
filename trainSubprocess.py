@@ -29,7 +29,6 @@ def train(word):
         process.wait()
         output = process.communicate()[0]
         exitCode = process.returncode
-        print(i)
 
     if(exitCode == 0):
         return output
