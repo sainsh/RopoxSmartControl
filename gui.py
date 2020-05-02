@@ -163,9 +163,7 @@ def bord_screen(myfont):
                     print(
                         'TopLeft button was pressed at {0}'.format(mouse_pos))
                     if(os.name != "nt"):
-                        thread = threading.Thread(target = table.goUp(),args = ())
-                        thread.daemon = True
-                        thread.start()
+                        table.goUp(5)
                     h += 5
                 elif tm_button.collidepoint(mouse_pos):
                     print('TopMid button was pressed at {0}'.format(mouse_pos))
@@ -176,9 +174,7 @@ def bord_screen(myfont):
                     print(
                         'BottomLeft button was pressed at {0}'.format(mouse_pos))
                     if(os.name != "nt"):
-                        thread = threading.Thread(target = table.goDown(),args = ())
-                        thread.daemon = True
-                        thread.start()
+                        table.goDown(5)
                     h -= 5    
                 elif bm_button.collidepoint(mouse_pos):
                     print(
