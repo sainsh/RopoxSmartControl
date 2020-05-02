@@ -7,8 +7,9 @@ from pygame.locals import *
 import os
 print(os.name)
 
+rp = ""
 if(os.name != "nt"):
-    import GPIOController as table
+    import rasp_paste as rp
 import threading
 
 width = 800
@@ -39,7 +40,7 @@ def main():
             break
     pygame.quit()
     if(os.name != "nt"):
-        table.cleanUp()
+        rp.cleanup()
     sys.exit
 
 
@@ -163,7 +164,7 @@ def bord_screen(myfont):
                     print(
                         'TopLeft button was pressed at {0}'.format(mouse_pos))
                     if(os.name != "nt"):
-                        thread = threading.Thread(target = table.goUp(),args = ())
+                        thread = threading.Thread(target = rp.goUp(),args = ())
                         thread.daemon = True
                         thread.start()
                     h += 5
@@ -176,7 +177,7 @@ def bord_screen(myfont):
                     print(
                         'BottomLeft button was pressed at {0}'.format(mouse_pos))
                     if(os.name != "nt"):
-                        thread = threading.Thread(target = table.goDown(),args = ())
+                        thread = threading.Thread(target = rp.goDown(),args = ())
                         thread.daemon = True
                         thread.start()
                     h -= 5    
