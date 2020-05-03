@@ -4,6 +4,7 @@ import subprocess
 import pygame
 import sys
 import time
+import trainSubprocess
 from pygame.locals import *
 import os
 from queue import *
@@ -101,6 +102,7 @@ def sixButtonEventHandler():
             if event.type == pygame.QUIT:
                 return False
 
+                                                     #### TODO: CHECK WORDS IN ALL trainSubprocess.Train() ####
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = event.pos  # gets mouse position
 
@@ -118,6 +120,7 @@ def sixButtonEventHandler():
 
                     elif(currentScreen == "training"):
                         #Will start training of the word Ropox
+                        trainSubprocess.train("Ropox")
 
                     
                 elif buttons[1].collidepoint(mouse_pos):
@@ -132,6 +135,7 @@ def sixButtonEventHandler():
 
                     elif(currentScreen == "training"):
                         #Will start training of the word Bord
+                        trainSubprocess.train("bord")
                     
                 elif buttons[2].collidepoint(mouse_pos):
                     if(currentScreen == "main"):
@@ -142,7 +146,7 @@ def sixButtonEventHandler():
 
                     elif(currentScreen == "training"):
                         #Will start training of the word Hæv
-                    
+                        trainSubprocess.train("hæv")
 
                 elif buttons[3].collidepoint(mouse_pos):
                     if(currentScreen == "main"):
@@ -153,7 +157,7 @@ def sixButtonEventHandler():
 
                     elif(currentScreen == "training"):
                         #Will start training of the word Sænk/Ned
-                                      
+                        trainSubprocess.train("ned")             
                 elif buttons[4].collidepoint(mouse_pos):
                     if(currentScreen == "main"):
                         print("Write functionality here")
@@ -167,6 +171,7 @@ def sixButtonEventHandler():
                         #Det kan nok gøres noglelunde på samme måde som vores subprocessRun køres i mainloopet
                     elif(currentScreen == "training"):
                         #Will start training of the word Stop
+                        trainSubprocess.train("stop") 
 
                     
                 elif buttons[5].collidepoint(mouse_pos):

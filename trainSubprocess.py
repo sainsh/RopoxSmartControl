@@ -3,6 +3,7 @@ import subprocess, sys
 #Just call this function with a string representing the word as parameter
 def train(word):
 
+#Sugggestion: Might need to add, a command that will stop and start the regular Soparo along with compile the new Data for use.    #By DanORLarsen
 
     #All words will be trained 5 times
     for i in range(5):
