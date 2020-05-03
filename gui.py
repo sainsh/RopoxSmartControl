@@ -31,7 +31,6 @@ pygame.mouse.set_visible = False
 
 currentScreen = "main"
 
-
 def main():
     pygame.init()
     myfont = pygame.font.SysFont("freesansbold", 30)
