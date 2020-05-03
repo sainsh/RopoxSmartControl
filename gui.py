@@ -9,7 +9,7 @@ print(os.name)
 
 if(os.name != "nt"):
     import GPIOController as table
-import threading
+from threading import Thread
 
 width = 800
 height = 480
@@ -22,11 +22,13 @@ btn_height = 100
 clock = pygame.time.Clock()
 fps = 60
 
-screen = pygame.display.set_mode(size)
+screen = ""
 pygame.mouse.set_visible = False
 
 
 def main():
+    global screen
+    screen = pygame.display.set_mode(size)
     pygame.init()
     myfont = pygame.font.SysFont("freesansbold", 30)
     while True:
@@ -198,3 +200,4 @@ def text(txt, myfont, location):
 
 if __name__ == '__main__':
     main()
+    
