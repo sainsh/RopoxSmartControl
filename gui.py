@@ -6,7 +6,7 @@ import sys
 import time
 from pygame.locals import *
 import os
-from Queue import Queue, Empty
+from queue import *
 
 
 if(os.name != "nt"):
@@ -38,7 +38,7 @@ def main():
     myfont = pygame.font.SysFont("freesansbold", 30)
     #Dette bruges til at køre Sopare
     process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1, close_fds=ON_POSIX, cwd="../sopare")
-    q = Queue()
+    q = Queue() #Maybe little q in queue
     t = threading.Thread(target=enqueue_output, args=(process.stdout, q))
     t.daemon = True
     t.start()
@@ -63,6 +63,10 @@ def main():
             sixButtonLayout(["PROFIL", "BORD", "SKAB", u"LÅS", "OVN", "INDSTILLINGER"], myfont) # 123Ovn kunne måske ændres til træning
         elif(currentScreen == "table"):
             sixButtonLayout(["OP", u"HØJDE", u"LÅS", "NED", "PROFIL", "TILBAGE"], myfont)
+        elif(currentScreen == "settings"):
+            sixButtonLayout(["Sprog", u"Træn", u"Følsomhed", "Udtræk Data", "Ydligere?", "TILBAGE"], myfont)
+        elif(currentScreen == "training"):
+            sixButtonLayout(["Ropox", u"Bord", u"Hæv", "Sænk/Ned", "Stop", "TILBAGE"], myfont)         
 
             #123 Her kunne laves endnu et elif(): med nogle navne til knapper i træningsscreen, op, ned, ropox, bord tilbage
             #Currentscreen kunne blive døbt training
@@ -108,13 +112,26 @@ def sixButtonEventHandler():
                         
                     elif(currentScreen == "table"):
                         table.goUp(5)
+
+                    elif(currentScreen == "settings"):
+                        print("Sprog")
+
+                    elif(currentScreen == "training"):
+                        #Will start training of the word Ropox
+
                     
                 elif buttons[1].collidepoint(mouse_pos):
                     if(currentScreen == "main"):
                         currentScreen = "table"
+
                     elif(currentScreen == "table"):
                         print("Write functionality here")
 
+                    elif(currentScreen == "settings"):
+                        currentScreen = "training"
+
+                    elif(currentScreen == "training"):
+                        #Will start training of the word Bord
                     
                 elif buttons[2].collidepoint(mouse_pos):
                     if(currentScreen == "main"):
@@ -122,14 +139,21 @@ def sixButtonEventHandler():
                         
                     elif(currentScreen == "table"):
                         print("Write functionality here")
+
+                    elif(currentScreen == "training"):
+                        #Will start training of the word Hæv
                     
+
                 elif buttons[3].collidepoint(mouse_pos):
                     if(currentScreen == "main"):
                         print("Write functionality here")
                         
                     elif(currentScreen == "table"):
                         table.goDown(5)
-                    
+
+                    elif(currentScreen == "training"):
+                        #Will start training of the word Sænk/Ned
+                                      
                 elif buttons[4].collidepoint(mouse_pos):
                     if(currentScreen == "main"):
                         print("Write functionality here")
@@ -141,13 +165,22 @@ def sixButtonEventHandler():
                         #123 Der skal også tilføjes elif til alle disse "listeners" med elif(currentscreen == "training")
                         #Den når der klikkes på training -> op eksempelvis skal vores subprocessTraiining unktionalitet køres.
                         #Det kan nok gøres noglelunde på samme måde som vores subprocessRun køres i mainloopet
+                    elif(currentScreen == "training"):
+                        #Will start training of the word Stop
+
                     
                 elif buttons[5].collidepoint(mouse_pos):
                     if(currentScreen == "main"):
-                        print("Write functionality here")
+                        currentScreen == "settings"
                         
                     elif(currentScreen == "table"):
                         currentScreen = "main"
+
+                    elif(currentScreen == "settings"):
+                        currentScreen = "main"    
+
+                    elif(currentScreen == "training"):
+                        currentScreen = "settings" 
                     
             if(event.type == pygame.KEYDOWN):
                 if(event.key == K_ESCAPE):
