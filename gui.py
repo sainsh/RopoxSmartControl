@@ -30,6 +30,7 @@ def main():
     pygame.init()
     myfont = pygame.font.SysFont("freesansbold", 30)
     while True:
+        print("something")
         next = main_screen(myfont)
         if(next == "bord"):
             next = bord_screen(myfont)
