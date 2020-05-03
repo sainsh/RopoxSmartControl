@@ -110,6 +110,7 @@ def main_screen(myfont):
                 elif br_button.collidepoint(mouse_pos):
                     print(
                         'BottomRight button was pressed at {0}'.format(mouse_pos))
+                    return "train"
             if(event.type == pygame.KEYDOWN):
                 if(event.key == K_ESCAPE):
                     return False
@@ -192,6 +193,74 @@ def bord_screen(myfont):
                 if(event.key == K_ESCAPE):
                     return False
         screen.fill(bg)
+
+
+def Train_screen(myfont):
+
+    while True:
+        # create and display buttons
+        tl_button = button(width/4*1-btn_width/2, height/4,
+                           btn_width, btn_height, [255, 0, 0])
+        tm_button = button(width/4*2-btn_width/2, height/4,
+                           btn_width, btn_height, [255, 0, 0])
+        tr_button = button(width/4*3-btn_width/2, height/4,
+                           btn_width, btn_height, [255, 0, 0])
+        bl_button = button(width/4*1-btn_width/2, height/2,
+                           btn_width, btn_height, [255, 0, 0])
+        bm_button = button(width/4*2-btn_width/2, height/2,
+                           btn_width, btn_height, [255, 0, 0])
+        br_button = button(width/4*3-btn_width/2, height/2,
+                           btn_width, btn_height, [255, 0, 0])
+
+        # display text for buttons
+        text("PROFIL", myfont, tl_button.center)
+        text("BORD", myfont, tm_button.center)
+        text("SKAB", myfont, tr_button.center)
+        text(u"LÅS", myfont, bl_button.center)
+        text("OVN", myfont, bm_button.center)
+        text("INDSTILLINGER", myfont, br_button.center)
+
+        # display headline
+        pygame.display.set_caption('ROPOX')
+        text("ROPOX", myfont, (width/2, height/10))
+
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = event.pos  # gets mouse position
+
+                # checks if mouse position is over the button
+
+                if tl_button.collidepoint(mouse_pos):
+                    # prints current location of mouse
+                    print(
+                        'TopLeft button was pressed at {0}'.format(mouse_pos))
+                elif tm_button.collidepoint(mouse_pos):
+                    print('TopMid button was pressed at {0}'.format(mouse_pos))
+                    return "bord"
+
+                elif tr_button.collidepoint(mouse_pos):
+                    print(
+                        'TopRight button was pressed at {0}'.format(mouse_pos))
+                elif bl_button.collidepoint(mouse_pos):
+                    print(
+                        'BottomLeft button was pressed at {0}'.format(mouse_pos))
+                elif bm_button.collidepoint(mouse_pos):
+                    print(
+                        'BottomMid button was pressed at {0}'.format(mouse_pos))
+                elif br_button.collidepoint(mouse_pos):
+                    print(
+                        'BottomRight button was pressed at {0}'.format(mouse_pos))
+            if(event.type == pygame.KEYDOWN):
+                if(event.key == K_ESCAPE):
+                    return False
+        screen.fill(bg)
+
+        clock.tick(fps)
+
 
 
 def text(txt, myfont, location):
