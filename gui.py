@@ -67,6 +67,7 @@ def main():
             if("result:ropox" in currentline):
                 listening = True
                 tablelistening = False
+                waitThread = Thread(wait)
                 #Lytter skærm
             if listening:
                 if("result:table" in currentline):
@@ -302,7 +303,9 @@ def text(txt, myfont, location):
                  location[1]-text_to_display.get_rect().height/2)
     screen.blit(text_to_display, placement)
 
-
+def wait():
+    time.sleep(10)
+    listening = False
 
 
 if __name__ == '__main__':
