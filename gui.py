@@ -41,6 +41,7 @@ def main():
     screen = pygame.display.set_mode(size)
     pygame.init()
     myfont = pygame.font.SysFont("freesansbold", 30)
+    listeningFont = pygame.font.SysFont("freesansbold", 45)
     #Dette bruges til at køre Sopare
     process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1, close_fds=ON_POSIX, cwd="../sopare")
     q = Queue() #Maybe little q in queue
@@ -67,7 +68,10 @@ def main():
             if("result:ropox" in currentline):
                 listening = True
                 tablelistening = False
+                currentScreen = "listening"
                 waitThread = Thread(wait)
+                waitThread.daemon = False
+                waitThread.start
                 #Lytter skærm
             if listening:
                 if("result:table" in currentline):
@@ -102,7 +106,9 @@ def main():
         elif(currentScreen == "training"):
             sixButtonLayout(["Ropox", u"Bord", u"Hæv", "Ned", "Stop", "TILBAGE"], myfont)
         elif(currentScreen == "stop"):
-            stopButtonLayout("STOP", myFont, action)       
+            stopButtonLayout("STOP", myFont, action)
+        elif(currentScreen == "listening"):
+            listeningLayout("Lytter...", listeningFont)       
 
             #123 Her kunne laves endnu et elif(): med nogle navne til knapper i træningsscreen, op, ned, ropox, bord tilbage
             #Currentscreen kunne blive døbt training
@@ -296,6 +302,8 @@ def stopButtonLayout(name, myfont, action):
         text(name, myfont, buttons[0].center)
         text(action, myfont, (width/2, height-10))
 
+def listeningLayout(listeningFont, action):
+    text(action, listeningFont, (width/2, height/2))
 
 def text(txt, myfont, location):
     text_to_display = myfont.render(txt, 1, (255, 255, 255))
@@ -306,6 +314,7 @@ def text(txt, myfont, location):
 def wait():
     time.sleep(10)
     listening = False
+    currentScreen == "main"
 
 
 if __name__ == '__main__':
