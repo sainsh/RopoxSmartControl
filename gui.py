@@ -20,7 +20,10 @@ size = [width, height]
 bg = [0, 0, 0]
 btn_width = 180
 btn_height = 100
+stopBtn_width = 800
+stopBtn_height = 440
 buttons = [None] * 6
+action = ""
 
 ON_POSIX = 'posix' in sys.builtin_module_names
 
@@ -39,6 +42,7 @@ def main():
     screen = pygame.display.set_mode(size)
     pygame.init()
     myfont = pygame.font.SysFont("freesansbold", 30)
+    listeningFont = pygame.font.SysFont("freesansbold", 45)
     #Dette bruges til at køre Sopare
     process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1, close_fds=ON_POSIX, cwd="../sopare")
     q = Queue() #Maybe little q in queue
@@ -65,6 +69,11 @@ def main():
             if("result:ropox" in currentline):
                 listening = True
                 tablelistening = False
+                currentScreen = "listening"
+                waitThread = Thread(wait)
+                waitThread.daemon = False
+                waitThread.start
+                #Lytter skærm
             if listening:
                 if("result:table" in currentline):
                     tablelistening = True
@@ -73,9 +82,15 @@ def main():
                 if("result:up" in currentline):
                     table.goUp(5)
                     tablelistening = False
+                    action = u"Bord hæves..."
+                    currentScreen = "stop"
+                    # STOP KNAP osv.
                 elif("result:down" in currentline):
                     table.goDown(5)
                     tablelistening = False
+                    action = u"Bord kører ned..."
+                    currentScreen = "stop"
+                    # STOP KNAP osv.
 
         if(listening):
             text("Lytter", myfont, (10, 10))
@@ -90,7 +105,11 @@ def main():
         elif(currentScreen == "settings"):
             sixButtonLayout(["Sprog", u"Træn", u"Følsomhed", "Udtræk Data", "Ydligere?", "TILBAGE"], myfont)
         elif(currentScreen == "training"):
-            sixButtonLayout(["Ropox", u"Bord", u"Hæv", "Sænk/Ned", "Stop", "TILBAGE"], myfont)         
+            sixButtonLayout(["Ropox", u"Bord", u"Hæv", "Ned", "Stop", "TILBAGE"], myfont)
+        elif(currentScreen == "stop"):
+            stopButtonLayout("STOP", myFont, action)
+        elif(currentScreen == "listening"):
+            listeningLayout("Lytter...", listeningFont)       
 
             #123 Her kunne laves endnu et elif(): med nogle navne til knapper i træningsscreen, op, ned, ropox, bord tilbage
             #Currentscreen kunne blive døbt training
@@ -100,7 +119,10 @@ def main():
         text("ROPOX", myfont, (width/2, height/10))
         pygame.display.flip()
         #managing clicks on buttons
-        keepGoing = sixButtonEventHandler()
+        if(currentScreen == "stop"):
+            keepGoing = stopButtonEventHandler()
+        else:
+            keepGoing = sixButtonEventHandler()
         if not keepGoing:
             break
         screen.fill(bg)
@@ -147,6 +169,8 @@ def sixButtonEventHandler():
                     elif(currentScreen == "training"):
                         #Will start training of the word Ropox
                        pass
+                    elif(currentScreen == "stop")
+                        #STOP
 
                     
                 elif buttons[1].collidepoint(mouse_pos):
@@ -252,6 +276,38 @@ def sixButtonLayout(names, myfont):
         text(names[4], myfont, buttons[4].center)
         text(names[5], myfont, buttons[5].center)
 
+def stopButtonEventHandler():
+    global currentScreen
+    #Running through all events this iteration
+    for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+
+                                                     
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = event.pos  # gets mouse position
+
+                # checks if mouse position is over the button
+
+                if buttons[0].collidepoint(mouse_pos):
+                    if(currentScreen == "stop"):
+                        table.stop #YAHOOOO
+            if(event.type == pygame.KEYDOWN):
+                if(event.key == K_ESCAPE):
+                    return False
+    return True
+
+def stopButtonLayout(name, myfont, action):
+    # create and display buttons
+        buttons[0] = button(width/2*1-stopBtn_width/2, height/2+20,
+                           stopBtn_width, stopBtn_height, [255, 0, 0])
+
+        # display text for buttons
+        text(name, myfont, buttons[0].center)
+        text(action, myfont, (width/2, height-10))
+
+def listeningLayout(listeningFont, action):
+    text(action, listeningFont, (width/2, height/2))
 
 def text(txt, myfont, location):
     text_to_display = myfont.render(txt, 1, (255, 255, 255))
@@ -259,7 +315,10 @@ def text(txt, myfont, location):
                  location[1]-text_to_display.get_rect().height/2)
     screen.blit(text_to_display, placement)
 
-
+def wait():
+    time.sleep(10)
+    listening = False
+    currentScreen == "main"
 
 
 if __name__ == '__main__':
