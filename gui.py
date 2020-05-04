@@ -7,6 +7,7 @@ import time
 from pygame.locals import *
 import os
 from Queue import Queue, Empty
+import signal
 
 
 if(os.name != "nt"):
@@ -58,7 +59,7 @@ def main():
             currentline = nextline.decode()
             #This is where our if/elif statements will control the GPIO pins when a specific word is recognized
             if("result:stop" in currentline):
-                table.stop()
+                table.stopTable()
                 listening = False
                 tablelistening = False
             if("result:ropox" in currentline):
@@ -105,6 +106,9 @@ def main():
         screen.fill(bg)
         clock.tick(fps)
         
+    os.killpg(os.getpgid(process.pid), signal.SIGTERM)
+    table.stopTable()
+    table.cleanUp()
     pygame.quit()
     if(os.name != "nt"):
         table.cleanUp()
