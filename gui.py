@@ -6,7 +6,7 @@ import sys
 import time
 from pygame.locals import *
 import os
-from Queue import Queue, Empty
+from queue import Queue, Empty
 import signal
 
 
@@ -18,8 +18,8 @@ width = 800
 height = 480
 size = [width, height]
 bg = [0, 0, 0]
-btn_width = 180
-btn_height = 100
+btn_width = width/4
+btn_height = height/3
 stopBtn_width = 800
 stopBtn_height = 400
 buttons = [None] * 6
@@ -43,9 +43,13 @@ def main():
     global currentScreen
     global listening
     global tablelistening
+    global height
+    global width
     screen = pygame.display.set_mode(size)
     pygame.init()
-    pygame.mouse.set_visible(False)
+    width = pygame.display.Info().current_w
+    height = pygame.display.Info().current_h
+    #pygame.mouse.set_visible(False)
     myfont = pygame.font.SysFont("freesansbold", 30)
     #Dette bruges til at køre Sopare
     process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1, close_fds=ON_POSIX, cwd="../sopare")
@@ -132,17 +136,17 @@ def main():
             screen.fill(bg)
             clock.tick(fps)
     except Exception as e:
+        if(os.name != "nt"):
+            os.killpg(os.getpgid(process.pid), signal.SIGTERM)
+            table.stopTable()
+            table.cleanUp()
+        print(e)
+
+    if(os.name != "nt"):    
         os.killpg(os.getpgid(process.pid), signal.SIGTERM)
         table.stopTable()
         table.cleanUp()
-        print(e)
-
-        
-    os.killpg(os.getpgid(process.pid), signal.SIGTERM)
-    table.stopTable()
     pygame.quit()
-    if(os.name != "nt"):
-        table.cleanUp()
     sys.exit
        
 #Queue that sends through results from Sopare
