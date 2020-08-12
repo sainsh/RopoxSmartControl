@@ -61,8 +61,8 @@ def main():
     global width
     screen = pygame.display.set_mode(size)
     pygame.init()
-    width = pygame.display.Info().current_w
-    height = pygame.display.Info().current_h
+    #width = pygame.display.Info().current_w
+    #height = pygame.display.Info().current_h
     #pygame.mouse.set_visible(False)
     myfont = pygame.font.SysFont("freesansbold", 30)
     #Used for running sopare
