@@ -3,8 +3,8 @@ import time
 from threading import Thread
 
 #The GPIO pins which acts as up and down buttons on the Ropox table
-down = 5
-up = 6
+down = 29
+up = 31
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(down, GPIO.OUT)
