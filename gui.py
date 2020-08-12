@@ -82,7 +82,7 @@ def main():
                 pass #do nothing
             else: # got a line from sopare
                 nextline = line
-                q.print()
+                print(list(q.queue))
                 if process.poll() is not None:
                     break
                 #decoding from bytes to string
