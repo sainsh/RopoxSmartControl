@@ -67,7 +67,7 @@ def main():
     #pygame.mouse.set_visible(False)
     myfont = pygame.font.SysFont("freesansbold", 30)
     #Used for running sopare
-    process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=0, close_fds=ON_POSIX, cwd="../../sopare")
+    process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1, close_fds=ON_POSIX, cwd="../../sopare")
     q = Queue.Queue() #Maybe little q in queue
     t = Thread(target=enqueue_output, args=(process.stdout, q))
     t.daemon = True
@@ -82,9 +82,8 @@ def main():
                 pass #do nothing
             else: # got a line from sopare
                 nextline = line
-                print(list(q.queue))
                 if process.poll() is not None:
-                    pass
+                    break
                 #decoding from bytes to string
                 currentline = nextline.decode()
                 print("should be working???")
