@@ -155,6 +155,7 @@ def main():
                 print("keepgoing")
                 print(currentScreen)
             if not keepGoing:
+                print(keepGoing)
                 break
             screen.fill(bg)
             clock.tick(fps)
@@ -167,11 +168,9 @@ def main():
         print(e)
 
     if(os.name != "nt"):  
-          
         #os.kill(os.getpid(process.pid), signal.SIGTERM)
         table.stopTable()
         table.cleanUp()
-    print("while loop terminated")
     pygame.quit()
     sys.exit
        
@@ -187,7 +186,6 @@ def sixButtonEventHandler():
     #Running through all events this iteration
     for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                print("quit")
                 return False
 
                                                      #### TODO: CHECK WORDS IN ALL trainSubprocess.Train() ####
