@@ -33,8 +33,8 @@ width = 800
 height = 480
 size = [width, height]
 bg = [0, 0, 0]
-btn_width = width/6
-btn_height = height/4
+btn_width = width/5
+btn_height = height/3
 stopBtn_width = 800
 stopBtn_height = 400
 buttons = [None] * 6
@@ -72,7 +72,7 @@ def main():
     t = Thread(target=enqueue_output, args=(process.stdout, q))
     t.daemon = True
     t.start()
-
+    counter = 0
     try:
         while True:
             #using our enqueue_output thread to find out if sopare has sent anything
@@ -88,6 +88,9 @@ def main():
                 currentline = nextline.decode()
                 #This is where our if/elif statements will control the GPIO pins when a specific word is recognized
                 print(currentline)
+                counter+=1
+                print(counter)
+
                 if("result:stop" in currentline):
                     table.stopTable()
                     listening = False
