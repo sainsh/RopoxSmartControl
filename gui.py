@@ -67,7 +67,7 @@ def main():
     #pygame.mouse.set_visible(False)
     myfont = pygame.font.SysFont("freesansbold", 30)
     #Used for running sopare
-    process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1, close_fds=ON_POSIX, cwd="../sopare")
+    process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1, close_fds=ON_POSIX, cwd="../../")
     q = Queue.Queue() #Maybe little q in queue
     t = Thread(target=enqueue_output, args=(process.stdout, q))
     t.daemon = True
