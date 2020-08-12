@@ -83,11 +83,9 @@ def main():
             else: # got a line from sopare
                 nextline = line
                 if process.poll() is not None:
-                    print("poll is not none")
                     break
                 #decoding from bytes to string
                 currentline = nextline.decode()
-                print("should be working???")
                 #This is where our if/elif statements will control the GPIO pins when a specific word is recognized
                 if("result:stop" in currentline):
                     table.stopTable()
@@ -149,11 +147,9 @@ def main():
             pygame.display.flip()
             #managing clicks on buttons
             if(currentScreen == "stop"):
-                
                 keepGoing = stopButtonEventHandler()
             else:
                 keepGoing = sixButtonEventHandler()
-                print(currentScreen)
             if not keepGoing:
                 break
             screen.fill(bg)
