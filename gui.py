@@ -154,13 +154,13 @@ def main():
             clock.tick(fps)
     except Exception as e:
         if(os.name != "nt"):
-            os.killpg(os.getpgid(process.pid), signal.SIGTERM)
+            os.kill(os.getpgid(process.pid), signal.SIGTERM)
             table.stopTable()
             table.cleanUp()
         print(e)
 
     if(os.name != "nt"):    
-        os.killpg(os.getpgid(process.pid), signal.SIGTERM)
+        os.kill(os.getpgid(process.pid), signal.SIGTERM)
         table.stopTable()
         table.cleanUp()
     pygame.quit()
