@@ -83,6 +83,7 @@ def main():
             else: # got a line from sopare
                 nextline = line
                 if process.poll() is not None:
+                    print("poll is not none")
                     break
                 #decoding from bytes to string
                 currentline = nextline.decode()
@@ -152,15 +153,12 @@ def main():
                 keepGoing = stopButtonEventHandler()
             else:
                 keepGoing = sixButtonEventHandler()
-                print("keepgoing")
                 print(currentScreen)
             if not keepGoing:
-                print(keepGoing)
                 break
             screen.fill(bg)
             clock.tick(fps)
     except Exception as e:
-        print("exception hit")
         if(os.name != "nt"):
             #os.kill(os.getpid(process.pid), signal.SIGTERM)
             table.stopTable()
