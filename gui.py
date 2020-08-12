@@ -148,11 +148,12 @@ def main():
             pygame.display.flip()
             #managing clicks on buttons
             if(currentScreen == "stop"):
-                print("currentscreen = stop")
+                
                 keepGoing = stopButtonEventHandler()
             else:
                 keepGoing = sixButtonEventHandler()
                 print("keepgoing")
+                print(currentScreen)
             if not keepGoing:
                 break
             screen.fill(bg)
