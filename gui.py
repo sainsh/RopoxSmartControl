@@ -13,10 +13,10 @@ import signal
 import json
 
 
-with open('.\RopoxSmartControl\settings.json') as settingsFile:
+with open('./settings.json') as settingsFile:
     settings = json.load(settingsFile)
 lang = settings['lang']
-with open('.\RopoxSmartControl\Localization\{}.json'.format(lang), encoding='utf8' ) as jsonFile:
+with open('./Localization/{}.json'.format(lang), encoding='utf8' ) as jsonFile:
     strings = json.load(jsonFile)
 def words(word):
     return strings["text"][word]
