@@ -8,15 +8,16 @@ from pygame.locals import *
 import os
 from multiprocessing import Queue
 import signal
+import io
 
 #JSON imports (Localization implementation)
 import json
 
 
-with open('./settings.json') as settingsFile:
+with io.open('./settings.json') as settingsFile:
     settings = json.load(settingsFile)
 lang = settings['lang']
-with open('./Localization/{}.json'.format(lang), encoding='utf8' ) as jsonFile:
+with io.open('./Localization/{}.json'.format(lang), encoding='utf8' ) as jsonFile:
     strings = json.load(jsonFile)
 def words(word):
     return strings["text"][word]
