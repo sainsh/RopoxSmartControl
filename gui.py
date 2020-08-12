@@ -33,7 +33,7 @@ width = 800
 height = 480
 size = [width, height]
 bg = [0, 0, 0]
-btn_width = width/4
+btn_width = width/5
 btn_height = height/5
 stopBtn_width = 800
 stopBtn_height = 400
@@ -67,7 +67,7 @@ def main():
     #pygame.mouse.set_visible(False)
     myfont = pygame.font.SysFont("freesansbold", 30)
     #Used for running sopare
-    process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=2, close_fds=ON_POSIX, cwd="../../")
+    process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1, close_fds=ON_POSIX, cwd="../../")
     q = Queue.Queue() #Maybe little q in queue
     t = Thread(target=enqueue_output, args=(process.stdout, q))
     t.daemon = True
@@ -156,6 +156,7 @@ def main():
             else:
                 keepGoing = sixButtonEventHandler()
             if not keepGoing:
+                print("not keep going")
                 break
             screen.fill(bg)
             clock.tick(fps)
