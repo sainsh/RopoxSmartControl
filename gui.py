@@ -163,7 +163,8 @@ def main():
             table.cleanUp()
         print(e)
 
-    if(os.name != "nt"):    
+    if(os.name != "nt"):  
+        print("while loop terminated")  
         #os.kill(os.getpid(process.pid), signal.SIGTERM)
         table.stopTable()
         table.cleanUp()
