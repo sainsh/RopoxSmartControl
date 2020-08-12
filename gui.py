@@ -75,7 +75,6 @@ def main():
 
     try:
         while True:
-            print("started to listen")
             #using our enqueue_output thread to find out if sopare has sent anything
             try:  line = q.get_nowait() # or q.get(timeout=.1)
                 
@@ -84,6 +83,7 @@ def main():
             else: # got a line from sopare
                 nextline = line
                 if process.poll() is not None:
+                    print("started to listen")
                     break
                 #decoding from bytes to string
                 currentline = nextline.decode()
