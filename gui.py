@@ -6,16 +6,17 @@ import sys
 import time
 from pygame.locals import *
 import os
-from Queue import Queue, Empty
+from queue import Queue, Empty
 import signal
 
 #JSON imports (Localization implementation)
 import json
 
-with open('settings.json') as settingsFile:
+
+with open('.\RopoxSmartControl\settings.json') as settingsFile:
     settings = json.load(settingsFile)
 lang = settings['lang']
-with open('.\Localization\{}.json'.format(lang), encoding='utf8' ) as jsonFile:
+with open('.\RopoxSmartControl\Localization\{}.json'.format(lang), encoding='utf8' ) as jsonFile:
     strings = json.load(jsonFile)
 def words(word):
     return strings["text"][word]
