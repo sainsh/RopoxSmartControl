@@ -157,6 +157,7 @@ def main():
             screen.fill(bg)
             clock.tick(fps)
     except Exception as e:
+        print("exception hit")
         if(os.name != "nt"):
             #os.kill(os.getpid(process.pid), signal.SIGTERM)
             table.stopTable()
