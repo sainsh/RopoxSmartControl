@@ -79,14 +79,16 @@ def main():
             try:  line = q.get_nowait() # or q.get(timeout=.1)
                 
             except Queue.Empty:
+                print("queue is empty")
                 pass #do nothing
             else: # got a line from sopare
                 nextline = line
                 if process.poll() is not None:
-                    print("started to listen")
+                    print("poll is not None")
                     break
                 #decoding from bytes to string
                 currentline = nextline.decode()
+                print("should be working???")
                 #This is where our if/elif statements will control the GPIO pins when a specific word is recognized
                 if("result:stop" in currentline):
                     table.stopTable()
