@@ -9,11 +9,24 @@ import os
 from queue import Queue, Empty
 import signal
 
+#JSON imports (Localization implementation)
+import json
+
+with open('RopoxSmartControl\settings.json') as settingsFile:
+    settings = json.load(settingsFile)
+lang = settings['lang']
+with open('RopoxSmartControl\Localization\{}.json'.format(lang), encoding='utf8' ) as jsonFile:
+    strings = json.load(jsonFile)
+def words(word):
+    return strings["text"][word]
+
+def picture(word):
+    return strings["pictures"][word]
+
 
 if(os.name != "nt"):
     import GPIOController as table
 from threading import Thread
-
 width = 800
 height = 480
 size = [width, height]
@@ -51,7 +64,7 @@ def main():
     height = pygame.display.Info().current_h
     #pygame.mouse.set_visible(False)
     myfont = pygame.font.SysFont("freesansbold", 30)
-    #Dette bruges til at køre Sopare
+    #Used for running sopare
     process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1, close_fds=ON_POSIX, cwd="../sopare")
     q = Queue() #Maybe little q in queue
     t = Thread(target=enqueue_output, args=(process.stdout, q))
@@ -92,32 +105,35 @@ def main():
                     if("result:up" in currentline):
                         table.goUp(5)
                         tablelistening = False
-                        action = u"Bord hæves..."
+                        action = words("respondsRaise")
                         currentScreen = "stop"
-                        # STOP KNAP osv.
+                        # STOP button
                     elif("result:down" in currentline):
                         table.goDown(5)
                         tablelistening = False
-                        action = u"Bord kører ned..."
+                        action = words("respondsLower")
                         currentScreen = "stop"
-                        # STOP KNAP osv.
-            
+                        # STOP button
             #optimized layoutcontrol
             if(currentScreen == "main"):
-                sixButtonLayout(["PROFIL", "BORD", "SKAB", u"LÅS", "OVN", "INDSTILLINGER"], myfont) # 123Ovn kunne måske ændres til træning
+                sixButtonLayout([words("profile"), words("table"), words("cupboard"), 
+                words("lock"), words("cupboard"), words("settings")], myfont)
             elif(currentScreen == "table"):
-                sixButtonLayout(["OP", u"HØJDE", u"LÅS", "NED", "PROFIL", "TILBAGE"], myfont)
+                sixButtonLayout([picture("raiseArrow"), words("height"), words("lock"), 
+                picture("lowerArrow"), words("profile"), words("back")], myfont)
             elif(currentScreen == "settings"):
-                sixButtonLayout(["Sprog", u"Træn", u"Følsomhed", "Udtræk Data", "Ydligere?", "TILBAGE"], myfont)
+                sixButtonLayout([words("language"), words("train"), "...", 
+                words("exportData"), "...", words("back")], myfont)
             elif(currentScreen == "training"):
-                sixButtonLayout(["Ropox", u"Bord", u"Hæv", "Ned", "Stop", "TILBAGE"], myfont)
+                sixButtonLayout(["Ropox", words("table"), words("raise"), 
+                words("lower"), words("stop"), words("back")], myfont)
             elif(currentScreen == "stop"):
-                stopButtonLayout("STOP", myfont, action)
+                stopButtonLayout(words("stop"), myfont, action)
             elif(currentScreen == "listening"):
                 if(listening):
-                    listeningLayout("Lytter...")
+                    listeningLayout(words("respondsListen"))
                 elif(tablelistening):
-                    listeningLayout("Bord...")
+                    listeningLayout(words("respondsTable"))
 
                 #123 Her kunne laves endnu et elif(): med nogle navne til knapper i træningsscreen, op, ned, ropox, bord tilbage
                 #Currentscreen kunne blive døbt training

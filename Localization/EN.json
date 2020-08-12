@@ -1,24 +1,28 @@
-text :{ 
-    table: "Table",
-    profile: "Profile",
-    cupboard: "Cupboard",
-    lock: "Lock",
-    settings: "Settings",
-    back: "Back",
-    language: "Language",
-    exportData: "Export Data",
-    train: "Train",
-    raise: "Raise",
-    lower: "Lower",
-    more: "More..",
-    trainHeader1: "Train (1)",
-    trainHeader2: "Train (2)",
-    respondsRaise: "Going up...",
-    respondsLower: "Going down...",
-    respondsProfile: "Adjusting to profile..."
-}
-pictures :{
-    raiseArrow: "ArrowUp.png...",
-    lowerArrow: "ArrowDown.png...",
-    ropoxLogo: "Ropox.png..."
-}
+{"text" :{ 
+    "table": "Table",
+    "profile": "Profile",
+    "cupboard": "Cupboard",
+    "lock": "Lock",
+    "settings": "Settings",
+    "back": "Back",
+    "language": "Language",
+    "exportData": "Export Data",
+    "height": "Height",
+    "train": "Train",
+    "raise": "Raise",
+    "lower": "Lower",
+    "more": "More..",
+    "stop": "Stop",
+    "trainHeader1": "Train (1)",
+    "trainHeader2": "Train (2)",
+    "respondsRaise": "Going up...",
+    "respondsLower": "Going down...",
+    "respondsProfile": "Adjusting to profile...",
+    "repondsListen" : "Listening...",
+    "repondsTable" : "Table..."
+},
+"pictures" :{
+    "raiseArrow": "ArrowUp.png...",
+    "lowerArrow": "ArrowDown.png...",
+    "ropoxLogo": "Ropox.png..."
+}}

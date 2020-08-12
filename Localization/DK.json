@@ -1,24 +1,28 @@
-text :{ 
-    table: "Bord",
-    profile: "Profil",
-    cupboard: "Skab",
-    lock: u"Lås",
-    settings: "Indstillinger",
-    back: "Tilbage",
-    language: "Sprog",
-    exportData: "Exporter Data",
-    train: u"Træn",
-    raise: u"Hæv",
-    lower: u"Sænk",
-    more: "Mere..",
-    trainHeader1: u"Træn (1)",
-    trainHeader2: u"Træn (2)",
-    respondsRaise: u"Køre op...",
-    respondsLower: u"Køre ned...",
-    respondsProfile: "Indstiller til profil..."
-}
-pictures :{
-    raiseArrow: "PilOP.png...",
-    lowerArrow: "PilNed.png...",
-    ropoxLogo: "Ropox.png..."
-}
+{"text" :{ 
+    "table": "Bord",
+    "profile": "Profil",
+    "cupboard": "Skab",
+    "lock": "Lås",
+    "settings": "Indstillinger",
+    "back": "Tilbage",
+    "language": "Sprog",
+    "exportData": "Exporter Data",
+    "height": "Højde",
+    "train": "Træn",
+    "raise": "Hæv",
+    "lower": "Sænk",
+    "more": "Mere..",
+    "stop": "Stop",
+    "trainHeader1": "Træn (1)",
+    "trainHeader2": "Træn (2)",
+    "respondsRaise": "Køre op...",
+    "respondsLower": "Køre ned...",
+    "respondsProfile": "Indstiller til profil...",
+    "respondsListen" : "Lytter...",
+    "respondsTable" : "Bord..."
+},
+"pictures" :{
+    "raiseArrow": "PilOP.png...",
+    "lowerArrow": "PilNed.png...",
+    "ropoxLogo": "Ropox.png..."
+}}
