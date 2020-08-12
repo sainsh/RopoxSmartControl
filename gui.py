@@ -33,8 +33,8 @@ width = 800
 height = 480
 size = [width, height]
 bg = [0, 0, 0]
-btn_width = width/8
-btn_height = height/6
+btn_width = width/6
+btn_height = height/4
 stopBtn_width = 800
 stopBtn_height = 400
 buttons = [None] * 6
@@ -87,6 +87,7 @@ def main():
                 #decoding from bytes to string
                 currentline = nextline.decode()
                 #This is where our if/elif statements will control the GPIO pins when a specific word is recognized
+                print(currentline)
                 if("result:stop" in currentline):
                     table.stopTable()
                     listening = False
