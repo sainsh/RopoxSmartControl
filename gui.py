@@ -6,7 +6,7 @@ import sys
 import time
 from pygame.locals import *
 import os
-from multiprocessing import Queue
+import Queue
 import signal
 import io
 
@@ -68,7 +68,7 @@ def main():
     myfont = pygame.font.SysFont("freesansbold", 30)
     #Used for running sopare
     process = subprocess.Popen(('./sopare.py -l'), shell = True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=0, close_fds=ON_POSIX, cwd="../../sopare")
-    q = Queue() #Maybe little q in queue
+    q = Queue.Queue() #Maybe little q in queue
     t = Thread(target=enqueue_output, args=(process.stdout, q))
     t.daemon = True
     t.start()
@@ -77,7 +77,7 @@ def main():
         while True:
             #using our enqueue_output thread to find out if sopare has sent anything
             try:  line = q.get_nowait() # or q.get(timeout=.1)
-            except Queue.empty:
+            except Queue.Empty:
                 pass #do nothing
             else: # got a line from sopare
                 nextline = line
