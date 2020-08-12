@@ -84,7 +84,7 @@ def main():
                 nextline = line
                 print(list(q.queue))
                 if process.poll() is not None:
-                    break
+                    pass
                 #decoding from bytes to string
                 currentline = nextline.decode()
                 print("should be working???")
