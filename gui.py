@@ -34,7 +34,7 @@ height = 480
 size = [width, height]
 bg = [0, 0, 0]
 btn_width = width/5
-btn_height = height/3
+btn_height = height/4
 stopBtn_width = 800
 stopBtn_height = 400
 buttons = [None] * 6
@@ -83,6 +83,7 @@ def main():
             else: # got a line from sopare
                 nextline = line
                 if process.poll() is not None:
+                    print("poll is not None")
                     break
                 #decoding from bytes to string
                 currentline = nextline.decode()
@@ -164,7 +165,7 @@ def main():
             table.stopTable()
             table.cleanUp()
         print(e)
-
+    print("loop ended")
     if(os.name != "nt"):  
         os.killpg(os.getpgid(process.pid), signal.SIGTERM)
         table.stopTable()
