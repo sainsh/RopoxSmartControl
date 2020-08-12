@@ -79,12 +79,11 @@ def main():
             try:  line = q.get_nowait() # or q.get(timeout=.1)
                 
             except Queue.Empty:
-                print("queue is empty")
                 pass #do nothing
             else: # got a line from sopare
                 nextline = line
+                print(q)
                 if process.poll() is not None:
-                    print("poll is not None")
                     break
                 #decoding from bytes to string
                 currentline = nextline.decode()
