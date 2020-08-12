@@ -6,7 +6,7 @@ import sys
 import time
 from pygame.locals import *
 import os
-from multiprocessing import Queue, Empty
+from multiprocessing import Queue
 import signal
 
 #JSON imports (Localization implementation)
@@ -76,7 +76,7 @@ def main():
         while True:
             #using our enqueue_output thread to find out if sopare has sent anything
             try:  line = q.get_nowait() # or q.get(timeout=.1)
-            except Empty:
+            except Queue.empty:
                 pass #do nothing
             else: # got a line from sopare
                 nextline = line
