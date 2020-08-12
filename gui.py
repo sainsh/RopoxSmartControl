@@ -6,7 +6,7 @@ import sys
 import time
 from pygame.locals import *
 import os
-from queue import Queue, Empty
+from multiprocessing import Queue, Empty
 import signal
 
 #JSON imports (Localization implementation)
