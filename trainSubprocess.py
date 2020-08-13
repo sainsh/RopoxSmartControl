@@ -1,5 +1,12 @@
 import subprocess, sys
+import json
+import io
 
+with io.open('./settings.json') as settingsFile:
+    settings = json.load(settingsFile)
+lang = settings['lang']
+with io.open('./Localization/{}.json'.format(lang), encoding='utf8' ) as jsonFile:
+    strings = json.load(jsonFile)
 #Just call this function with a string representing the word as parameter
 def train(word):
 
@@ -20,10 +27,10 @@ def train(word):
             currentline = nextline.decode()
             #Checks where we are in the trainingprocess
             if(currentline.__contains__("start endless")):
-                sys.stdout.write("Sig " + word)
+                sys.stdout.write(strings["text"]["say"] + word)
                 sys.stdout.flush()
             if(currentline.__contains__("stop endless")):
-                sys.stdout.write("Vent")
+                sys.stdout.write(strings["text"]["wait"])
                 sys.stdout.flush()
                 
             

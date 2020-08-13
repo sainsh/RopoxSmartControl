@@ -18,8 +18,10 @@
     "respondsRaise": "Køre op...",
     "respondsLower": "Køre ned...",
     "respondsProfile": "Indstiller til profil...",
-    "respondsListen" : "Lytter...",
-    "respondsTable" : "Bord..."
+    "respondsListen": "Lytter...",
+    "respondsTable": "Bord...",
+    "say": "Sig",
+    "wait": "Vent"
 },
 "pictures" :{
     "raiseArrow": "PilOP.png...",

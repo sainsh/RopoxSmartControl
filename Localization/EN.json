@@ -19,7 +19,9 @@
     "respondsLower": "Going down...",
     "respondsProfile": "Adjusting to profile...",
     "repondsListen" : "Listening...",
-    "repondsTable" : "Table..."
+    "repondsTable" : "Table...",
+    "say": "Say",
+    "wait": "Wait"
 },
 "pictures" :{
     "raiseArrow": "ArrowUp.png...",
