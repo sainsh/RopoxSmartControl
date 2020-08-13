@@ -21,7 +21,8 @@
     "repondsListen" : "Listening...",
     "repondsTable" : "Table...",
     "say": "Say",
-    "wait": "Wait"
+    "wait": "Wait",
+    "working": "Working"
 },
 "pictures" :{
     "raiseArrow": "ArrowUp.png...",

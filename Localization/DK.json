@@ -21,7 +21,8 @@
     "respondsListen": "Lytter...",
     "respondsTable": "Bord...",
     "say": "Sig",
-    "wait": "Vent"
+    "wait": "Vent",
+    "working": "virker"
 },
 "pictures" :{
     "raiseArrow": "PilOP.png...",

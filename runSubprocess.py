@@ -1,4 +1,13 @@
 import subprocess, sys, time
+import json
+import io
+
+with io.open('./settings.json') as settingsFile:
+    settings = json.load(settingsFile)
+lang = settings['lang']
+with io.open('./Localization/{}.json'.format(lang), encoding='utf8' ) as jsonFile:
+    strings = json.load(jsonFile)
+
 
 def run():
 
@@ -17,7 +26,7 @@ def run():
         print(currentline)
         #This is where our if/elif statements will control the GPIO pins when a specific word is recognized
         if("ropox" in currentline):
-            sys.stdout.write("virker\n")
+            sys.stdout.write(strings["text"]["working"])
             sys.stdout.flush()
 
     process.wait()
