@@ -234,7 +234,7 @@ def sixButtonEventHandler():
                         print("Write functionality here")
 
                     elif(currentScreen == "training"):
-                        #Will start training of the word Up
+                        #Will start training of the word Raise
                         pass
 
                 elif buttons[3].collidepoint(mouse_pos):
@@ -245,7 +245,7 @@ def sixButtonEventHandler():
                         table.goDown(5)
 
                     elif(currentScreen == "training"):
-                        #Will start training of the word Down
+                        #Will start training of the word Lower
                         pass
 
                 elif buttons[4].collidepoint(mouse_pos):
