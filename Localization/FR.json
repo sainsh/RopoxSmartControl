@@ -1,0 +1,31 @@
+{"text" :{ 
+    "table": "",
+    "profile": "",
+    "cupboard": "",
+    "lock": "",
+    "settings": "",
+    "back": "",
+    "language": "",
+    "exportData": "",
+    "height": "",
+    "train": "",
+    "raise": "",
+    "lower": "",
+    "more": "",
+    "stop": "",
+    "trainHeader1": "",
+    "trainHeader2": "",
+    "respondsRaise": "",
+    "respondsLower": "",
+    "respondsProfile": "",
+    "repondsListen" : "",
+    "repondsTable" : "",
+    "say": "",
+    "wait": "",
+    "working": ""
+},
+"pictures" :{
+    "raiseArrow": "",
+    "lowerArrow": "",
+    "ropoxLogo": ""
+}}
